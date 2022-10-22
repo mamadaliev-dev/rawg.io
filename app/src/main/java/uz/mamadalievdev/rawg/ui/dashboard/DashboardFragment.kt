@@ -1,44 +1,57 @@
 package uz.mamadalievdev.rawg.ui.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import uz.mamadalievdev.rawg.R
+import uz.mamadalievdev.rawg.data.base.BaseFragment
 import uz.mamadalievdev.rawg.databinding.FragmentDashboardBinding
+import uz.mamadalievdev.rawg.ui.adapters.PublisherAdapter
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment() {
+class DashboardFragment :
+    BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
+    private val viewModel: DashboardViewModel by viewModels()
 
-    private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    private val adapter by lazy {
+        PublisherAdapter()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreate() {
+        binding.apply {
+            publishersList.layoutManager = GridLayoutManager(requireContext(),
+                2, GridLayoutManager.VERTICAL, false)
+            publishersList.adapter = adapter
+        }
+
+        adapter.setItemClickListener {
+            val bundle = bundleOf("ID" to it)
+            navController.navigate(R.id.action_navigation_home_to_gameDetailsFragment, bundle)
+        }
+
+        viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
+            binding.swipeRefresh.isRefreshing = it
+        }
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getPublishers()
+        }
+
+        adapter.setItemClickListener {
+            val bundle = bundleOf("ID" to it)
+            navController.navigate(R.id.action_navigation_dashboard_to_publisherDetailsFragment,
+                bundle)
+        }
+
+        viewModel.getPublishers()
+        viewModel.publishersLiveData.observe(viewLifecycleOwner) {
+            adapter.setPublishers(it)
+        }
     }
 }

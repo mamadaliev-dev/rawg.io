@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -24,7 +24,16 @@
         android:id="@+id/navigation_dashboard"
         android:name="uz.mamadalievdev.rawg.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_publisherDetailsFragment"
+            app:destination="@id/publisherDetailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/publisherDetailsFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -43,22 +52,57 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/videosFragment"/>
-    </fragment>
-    <fragment
-        android:id="@+id/videosFragment"
-        android:name="uz.mamadalievdev.rawg.ui.videos.VideosFragment"
-        android:label="VideosFragment" >
         <action
-            android:id="@+id/action_videosFragment_to_playerFragment"
-            app:destination="@id/playerFragment"
+            android:id="@+id/action_gameDetailsFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
-            app:popUpTo="@id/playerFragment"/>
+            app:popUpTo="@id/imageViewerFragment"/>
     </fragment>
     <fragment
-        android:id="@+id/playerFragment"
-        android:name="uz.mamadalievdev.rawg.PlayerFragment"
-        android:label="PlayerFragment" />
+        android:id="@+id/videosFragment"
+        android:name="uz.mamadalievdev.rawg.ui.videos.VideosFragment"
+        android:label="Videos" />
+    <fragment
+        android:id="@+id/publisherDetailsFragment"
+        android:name="uz.mamadalievdev.rawg.ui.dashboard.PublisherDetailsFragment"
+        android:label="About Publisher" >
+        <action
+            android:id="@+id/action_publisherDetailsFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/gameDetailsFragment"/>
+        <action
+            android:id="@+id/action_publisherDetailsFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/imageViewerFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="uz.mamadalievdev.rawg.ui.ImageViewerFragment"
+        android:label="Image" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="uz.mamadalievdev.rawg.ui.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

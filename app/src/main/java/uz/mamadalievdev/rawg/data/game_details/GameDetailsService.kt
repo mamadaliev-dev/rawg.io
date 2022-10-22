@@ -6,6 +6,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import uz.mamadalievdev.rawg.BuildConfig
 import uz.mamadalievdev.rawg.data.game_details.model.GameDetails
+import uz.mamadalievdev.rawg.data.game_details.model.screnshots.Screenshots
 import uz.mamadalievdev.rawg.data.game_details.model.trailers.Videos
 import uz.mamadalievdev.rawg.data.home.models.Games
 
@@ -21,4 +22,10 @@ interface GameDetailsService {
         @Path("id") id: Long,
         @Query("key") closeReason: String = BuildConfig.TOKEN,
     ): Response<Videos>
+
+    @GET("games/{id}/screenshots")
+    suspend fun getGameScreenshots(
+        @Path("id") id: Long,
+        @Query("key") closeReason: String = BuildConfig.TOKEN,
+    ): Response<Screenshots>
 }

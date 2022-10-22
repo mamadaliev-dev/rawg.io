@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uz.mamadalievdev.rawg.R
 import uz.mamadalievdev.rawg.data.game_details.model.trailers.Video
+import uz.mamadalievdev.rawg.data.game_details.model.trailers.Videos
 import uz.mamadalievdev.rawg.data.home.models.Response
 import uz.mamadalievdev.rawg.databinding.ItemGameBinding
 import uz.mamadalievdev.rawg.databinding.ItemVideoBinding
@@ -39,7 +40,7 @@ class GameVideosAdapter : RecyclerView.Adapter<GameVideosAdapter.HomeMovieViewHo
                     .into(binding.image)
 
                 itemView.setOnClickListener {
-                    itemClickListener?.invoke(data.data1.vid480)
+                    itemClickListener?.invoke(data.data.`480`)
                 }
             }
         }

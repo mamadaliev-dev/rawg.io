@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import uz.mamadalievdev.rawg.data.base.BaseNetworkResult
 import uz.mamadalievdev.rawg.data.game_details.model.GameDetails
+import uz.mamadalievdev.rawg.data.game_details.model.screnshots.ScreenshotsResult
 import uz.mamadalievdev.rawg.data.game_details.model.trailers.Videos
 import uz.mamadalievdev.rawg.domain.game_details.GameDetailsUseCase
 import javax.inject.Inject
@@ -23,6 +24,9 @@ class GameDetailsViewModel @Inject constructor(
 
     private val gameVideos = MutableLiveData<Videos>()
     val gameVideosLiveData: LiveData<Videos> get() = gameVideos
+
+    private val gameScreenshots = MutableLiveData<List<ScreenshotsResult>>()
+    val gameScreenshotsLiveData: LiveData<List<ScreenshotsResult>> get() = gameScreenshots
 
     private val _isLoadingLiveData = MutableLiveData<Boolean>()
     val isLoadingLiveData: LiveData<Boolean> get() = _isLoadingLiveData
@@ -65,6 +69,32 @@ class GameDetailsViewModel @Inject constructor(
                     is BaseNetworkResult.Success -> {
                         result.data?.let { item ->
                             gameVideos.value = item
+                        }
+                    }
+                    is BaseNetworkResult.Error -> {
+                        result.message.let {
+                            _errorLiveData.value = it
+                        }
+                    }
+                    is BaseNetworkResult.Loading -> {
+                        result.isLoading?.let {
+                            _isLoadingLiveData.value = it
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun getGameScreenshots(id : Long) {
+        viewModelScope.launch {
+            mainUseCase.getGameScreenshots(id).catch {
+                Log.d("DDDD", "getServicesResponse: $this")
+            }.collect { result ->
+                when (result) {
+                    is BaseNetworkResult.Success -> {
+                        result.data?.let { item ->
+                            gameScreenshots.value = item.results
                         }
                     }
                     is BaseNetworkResult.Error -> {

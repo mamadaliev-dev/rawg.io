@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.mamadalievdev.rawg.BuildConfig
+import uz.mamadalievdev.rawg.data.base.BaseService
 import uz.mamadalievdev.rawg.data.game_details.GameDetailsService
 import uz.mamadalievdev.rawg.data.home.HomeService
 
@@ -56,5 +57,10 @@ object NetworkModule {
     @Provides
     fun provideGameDetailsService(retrofit: Retrofit): GameDetailsService {
         return retrofit.create(GameDetailsService::class.java)
+    }
+
+    @Provides
+    fun provideBaseService(retrofit: Retrofit): BaseService {
+        return retrofit.create(BaseService::class.java)
     }
 }

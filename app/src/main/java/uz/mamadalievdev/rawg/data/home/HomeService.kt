@@ -9,6 +9,7 @@ import uz.mamadalievdev.rawg.data.home.models.Games
 interface HomeService {
     @GET("games")
     suspend fun getGames(
+        @Query("page_size") page_size: Int = 100,
         @Query("key") closeReason: String = BuildConfig.TOKEN,
     ): Response<Games>
 }

@@ -10,4 +10,5 @@
     <color name="main_bg">#151515</color>
     <color name="grey">#202020</color>
     <color name="light_grey">#373737</color>
+    <color name="grey_text">#969696</color>
 </resources>
