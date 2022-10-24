@@ -1,4 +1,4 @@
-package uz.mamadalievdev.rawg.ui.dashboard
+package uz.mamadalievdev.rawg.ui.publishers
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -10,10 +10,7 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import uz.mamadalievdev.rawg.R
 import uz.mamadalievdev.rawg.data.base.BaseFragment
-import uz.mamadalievdev.rawg.data.base.model.publishers_games.PublisherGameResult
 import uz.mamadalievdev.rawg.databinding.FragmentPublisherDetailsBinding
-import uz.mamadalievdev.rawg.ui.adapters.HomeGamesAdapter
-import uz.mamadalievdev.rawg.ui.adapters.PublisherAdapter
 import uz.mamadalievdev.rawg.ui.adapters.PublisherGamesAdapter
 
 @AndroidEntryPoint

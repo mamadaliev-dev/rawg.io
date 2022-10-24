@@ -1,4 +1,4 @@
-package uz.mamadalievdev.rawg.ui.home
+package uz.mamadalievdev.rawg.ui.platform_games
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,19 +9,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import uz.mamadalievdev.rawg.data.base.BaseNetworkResult
+import uz.mamadalievdev.rawg.data.base.model.platforms.PlatformResult
 import uz.mamadalievdev.rawg.data.home.models.Games
-import uz.mamadalievdev.rawg.domain.home.HomeUseCase
+import uz.mamadalievdev.rawg.data.home.models.Response
+import uz.mamadalievdev.rawg.domain.base.BaseUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel  @Inject constructor(
-    private val mainUseCase: HomeUseCase,
+class GamesViewModel @Inject constructor(
+    private val mainUseCase: BaseUseCase,
 ) : ViewModel() {
-    private val games = MutableLiveData<Games>()
-    val gamesLiveData: LiveData<Games> get() = games
-
-    private val searchedGames = MutableLiveData<Games>()
-    val searchedGamesLiveData: LiveData<Games> get() = searchedGames
+    private val platformGames = MutableLiveData<List<Response>>()
+    val platformGamesLiveData: LiveData<List<Response>> get() = platformGames
 
     private val _isLoadingLiveData = MutableLiveData<Boolean>()
     val isLoadingLiveData: LiveData<Boolean> get() = _isLoadingLiveData
@@ -29,41 +28,15 @@ class HomeViewModel  @Inject constructor(
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData: LiveData<String> get() = _errorLiveData
 
-    fun getGames() {
+    fun getPlatformGames(id : Long) {
         viewModelScope.launch {
-            mainUseCase.getGames().catch {
+            mainUseCase.getPlatformGames(id).catch {
                 Log.d("DDDD", "getServicesResponse: $this")
             }.collect { result ->
                 when (result) {
                     is BaseNetworkResult.Success -> {
                         result.data?.let { item ->
-                            games.value = item
-                        }
-                    }
-                    is BaseNetworkResult.Error -> {
-                        result.message.let {
-                            _errorLiveData.value = it
-                        }
-                    }
-                    is BaseNetworkResult.Loading -> {
-                        result.isLoading?.let {
-                            _isLoadingLiveData.value = it
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    fun getSearchedGames(search: String) {
-        viewModelScope.launch {
-            mainUseCase.getSearchedGames(search).catch {
-                Log.d("DDDD", "getServicesResponse: $this")
-            }.collect { result ->
-                when (result) {
-                    is BaseNetworkResult.Success -> {
-                        result.data?.let { item ->
-                            searchedGames.value = item
+                            platformGames.value = item.results
                         }
                     }
                     is BaseNetworkResult.Error -> {

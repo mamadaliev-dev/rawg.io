@@ -21,4 +21,17 @@ class HomeRepositoryImpl @Inject constructor(private val service: HomeService) :
             }
         }
     }
+
+    override suspend fun getSearchedGames(search: String): Flow<BaseNetworkResult<Games>> {
+        return flow {
+            emit(BaseNetworkResult.Loading(true))
+            val response = service.getSearchedGames(search)
+            emit(BaseNetworkResult.Loading(false))
+            if (response.code() == 200) {
+                emit(BaseNetworkResult.Success(response.body()!!))
+            } else {
+                emit(BaseNetworkResult.Error("Xatolik"))
+            }
+        }
+    }
 }

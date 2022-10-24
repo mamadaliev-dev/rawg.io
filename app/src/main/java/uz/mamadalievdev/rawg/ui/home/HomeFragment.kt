@@ -1,5 +1,7 @@
 package uz.mamadalievdev.rawg.ui.home
 
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
@@ -46,5 +48,41 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewModel.gamesLiveData.observe(viewLifecycleOwner) {
             adapter.setGames(it.results)
         }
+
+        binding.search.setOnSearchClickListener {
+            binding.gamesList.visibility = View.GONE
+            binding.searchedGamesList.visibility = View.VISIBLE
+        }
+
+        binding.search.setOnCloseListener {
+            binding.searchedGamesList.visibility = View.GONE
+            binding.gamesList.visibility = View.VISIBLE
+            false
+        }
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query.isNullOrEmpty()) {
+                    binding.notFoundLayout.visibility = View.VISIBLE
+                    binding.searchedGamesList.visibility = View.GONE
+                } else {
+                    viewModel.getSearchedGames(search = query)
+                    viewModel.searchedGamesLiveData.observe(viewLifecycleOwner) {
+                        if (it.results.isEmpty()) {
+                            binding.notFoundLayout.visibility = View.VISIBLE
+                            binding.searchedGamesList.visibility = View.GONE
+                        } else {
+                            binding.notFoundLayout.visibility = View.GONE
+                            binding.searchedGamesList.visibility = View.VISIBLE
+                            adapter.setGames(it.results)
+                        }
+                    }
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 }

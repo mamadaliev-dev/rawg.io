@@ -35,14 +35,19 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.navigation_home,
-                R.id.navigation_dashboard,
                 R.id.navigation_notifications,
+                R.id.navigation_dashboard,
                 -> {
                     binding.navView.visibility = View.VISIBLE
                     supportActionBar?.show()
                     actionBar?.show()
                 }
+                R.id.navigation_home -> {
+                    binding.navView.visibility = View.VISIBLE
+                    supportActionBar?.hide()
+                    actionBar?.hide()
+                }
+
                 R.id.splashFragment -> {
                     binding.navView.visibility = View.GONE
                     supportActionBar?.hide()

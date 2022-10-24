@@ -8,10 +8,10 @@
     android:background="@color/main_bg">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/publishersList"
+        android:id="@+id/platformGamesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_padding_8"
-        tools:listitem="@layout/item_publisher" />
-
+        tools:listitem="@layout/item_game" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

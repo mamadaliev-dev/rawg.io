@@ -9,4 +9,8 @@ class HomeUseCase @Inject constructor(private val homeRepository: HomeRepository
     suspend fun getGames(): Flow<BaseNetworkResult<Games>> {
         return homeRepository.getGames()
     }
+
+    suspend fun getSearchedGames(search : String): Flow<BaseNetworkResult<Games>> {
+        return homeRepository.getSearchedGames(search)
+    }
 }

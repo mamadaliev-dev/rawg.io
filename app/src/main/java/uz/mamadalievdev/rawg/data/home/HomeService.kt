@@ -12,4 +12,10 @@ interface HomeService {
         @Query("page_size") page_size: Int = 100,
         @Query("key") closeReason: String = BuildConfig.TOKEN,
     ): Response<Games>
+
+    @GET("games")
+    suspend fun getSearchedGames(
+        @Query("search") search: String,
+        @Query("key") closeReason: String = BuildConfig.TOKEN,
+    ): Response<Games>
 }

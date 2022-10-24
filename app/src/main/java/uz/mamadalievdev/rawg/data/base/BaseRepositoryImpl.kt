@@ -6,9 +6,11 @@ import uz.mamadalievdev.rawg.data.base.BaseNetworkResult
 import uz.mamadalievdev.rawg.data.base.BaseService
 import uz.mamadalievdev.rawg.data.base.model.PublisherDetails
 import uz.mamadalievdev.rawg.data.base.model.Publishers
+import uz.mamadalievdev.rawg.data.base.model.platforms.PlatformsResponse
 import uz.mamadalievdev.rawg.data.base.model.publishers_games.PublishersGame
 import uz.mamadalievdev.rawg.data.game_details.model.GameDetails
 import uz.mamadalievdev.rawg.data.game_details.model.trailers.Videos
+import uz.mamadalievdev.rawg.data.home.models.Games
 import uz.mamadalievdev.rawg.domain.base.BaseRepository
 import uz.mamadalievdev.rawg.domain.game_details.GameDetailsRepository
 import javax.inject.Inject
@@ -44,6 +46,32 @@ class BaseRepositoryImpl @Inject constructor(private val service: BaseService) :
         return flow {
             emit(BaseNetworkResult.Loading(true))
             val response = service.getPublisherGames(id)
+            emit(BaseNetworkResult.Loading(false))
+            if (response.code() == 200) {
+                emit(BaseNetworkResult.Success(response.body()!!))
+            } else {
+                emit(BaseNetworkResult.Error("Xatolik"))
+            }
+        }
+    }
+
+    override suspend fun getPlatforms(): Flow<BaseNetworkResult<PlatformsResponse>> {
+        return flow {
+            emit(BaseNetworkResult.Loading(true))
+            val response = service.getPlatforms()
+            emit(BaseNetworkResult.Loading(false))
+            if (response.code() == 200) {
+                emit(BaseNetworkResult.Success(response.body()!!))
+            } else {
+                emit(BaseNetworkResult.Error("Xatolik"))
+            }
+        }
+    }
+
+    override suspend fun getPlatformGames(id: Long): Flow<BaseNetworkResult<Games>> {
+        return flow {
+            emit(BaseNetworkResult.Loading(true))
+            val response = service.getPlatformGames(id)
             emit(BaseNetworkResult.Loading(false))
             if (response.code() == 200) {
                 emit(BaseNetworkResult.Success(response.body()!!))

@@ -1,4 +1,4 @@
-package uz.mamadalievdev.rawg.ui.dashboard
+package uz.mamadalievdev.rawg.ui.publishers
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -12,7 +12,6 @@ import uz.mamadalievdev.rawg.data.base.BaseNetworkResult
 import uz.mamadalievdev.rawg.data.base.model.PublisherDetails
 import uz.mamadalievdev.rawg.data.base.model.PublisherResult
 import uz.mamadalievdev.rawg.data.base.model.publishers_games.PublisherGameResult
-import uz.mamadalievdev.rawg.data.home.models.Response
 import uz.mamadalievdev.rawg.domain.base.BaseUseCase
 import javax.inject.Inject
 

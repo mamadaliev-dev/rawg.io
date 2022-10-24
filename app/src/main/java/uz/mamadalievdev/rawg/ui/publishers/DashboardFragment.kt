@@ -1,4 +1,4 @@
-package uz.mamadalievdev.rawg.ui.dashboard
+package uz.mamadalievdev.rawg.ui.publishers
 
 import android.widget.Toast
 import androidx.core.os.bundleOf

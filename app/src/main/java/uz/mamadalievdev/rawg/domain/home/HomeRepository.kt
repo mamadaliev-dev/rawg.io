@@ -6,4 +6,5 @@ import uz.mamadalievdev.rawg.data.home.models.Games
 
 interface HomeRepository {
     suspend fun getGames(): Flow<BaseNetworkResult<Games>>
+    suspend fun getSearchedGames(search : String): Flow<BaseNetworkResult<Games>>
 }

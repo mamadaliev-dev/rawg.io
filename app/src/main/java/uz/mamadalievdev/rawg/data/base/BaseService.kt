@@ -7,7 +7,9 @@ import retrofit2.http.Query
 import uz.mamadalievdev.rawg.BuildConfig
 import uz.mamadalievdev.rawg.data.base.model.PublisherDetails
 import uz.mamadalievdev.rawg.data.base.model.Publishers
+import uz.mamadalievdev.rawg.data.base.model.platforms.PlatformsResponse
 import uz.mamadalievdev.rawg.data.base.model.publishers_games.PublishersGame
+import uz.mamadalievdev.rawg.data.home.models.Games
 
 interface BaseService {
     @GET("publishers")
@@ -28,4 +30,17 @@ interface BaseService {
         @Query("page_size") page_size: Int = 100,
         @Query("key") closeReason: String = BuildConfig.TOKEN,
     ): Response<PublishersGame>
+
+    @GET("platforms")
+    suspend fun getPlatforms(
+        @Query("page_size") page_size: Int = 100,
+        @Query("key") closeReason: String = BuildConfig.TOKEN,
+    ): Response<PlatformsResponse>
+
+    @GET("games")
+    suspend fun getPlatformGames(
+        @Query("platforms") platforms: Long,
+        @Query("page_size") page_size: Int = 100,
+        @Query("key") closeReason: String = BuildConfig.TOKEN,
+    ): Response<Games>
 }

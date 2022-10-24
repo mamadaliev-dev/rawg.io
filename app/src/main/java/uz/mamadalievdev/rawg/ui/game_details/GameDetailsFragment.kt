@@ -25,11 +25,6 @@ class GameDetailsFragment :
 
         val ID = requireArguments().getLong("ID", 0)
 
-//        binding.btnCast.setOnClickListener {
-//            val bundle = bundleOf("TV_ID" to TV_ID)
-//            navController.navigate(R.id.action_TVShowDetailFragment_to_castFragment, bundle)
-//        }
-
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
             if (it == true) {
