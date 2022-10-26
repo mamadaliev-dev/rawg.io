@@ -73,7 +73,16 @@
     <fragment
         android:id="@+id/videosFragment"
         android:name="uz.mamadalievdev.rawg.ui.videos.VideosFragment"
-        android:label="Videos" />
+        android:label="Videos" >
+        <action
+            android:id="@+id/action_videosFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/playerFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/publisherDetailsFragment"
         android:name="uz.mamadalievdev.rawg.ui.publishers.PublisherDetailsFragment"
@@ -127,4 +136,8 @@
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/gameDetailsFragment"/>
     </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="uz.mamadalievdev.rawg.ui.PlayerFragment"
+        android:label="" />
 </navigation>

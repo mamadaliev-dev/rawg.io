@@ -66,11 +66,7 @@ dependencies {
     // implementation 'com.google.android.gms:play-services-ads:21.3.0'
 
     // exoplayer
-    implementation "androidx.media3:media3-exoplayer:1.0.0-beta02"
-    implementation "androidx.media3:media3-ui:1.0.0-beta02"
-    implementation "androidx.media3:media3-exoplayer-dash:1.0.0-beta02"
-    implementation 'androidx.media3:media3-exoplayer:1.0.0-beta02'
-
+    implementation "com.google.android.exoplayer:exoplayer:2.16.1"
     // http
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -85,10 +81,6 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.42'
     kapt 'com.google.dagger:hilt-compiler:2.42'
 
-    // Room
-    implementation "androidx.room:room-runtime:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
-
     // For coroutines support
     implementation "androidx.room:room-ktx:2.4.2"
 
@@ -102,9 +94,6 @@ dependencies {
     // glide
     implementation 'com.github.bumptech.glide:glide:4.13.1'
     kapt 'com.github.bumptech.glide:compiler:4.13.1'
-
-    // videoplayer
-    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
     // rxJava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
