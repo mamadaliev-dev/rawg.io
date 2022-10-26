@@ -3,11 +3,11 @@ Unofficial mobile application of rawg.io database using Exoplayer✨
 ## API: [rawg](https://rawg.io/apidocs)
 
 ## Libraries
-- ExoPlayer
+ExoPlayer
 ```
 implementation "com.google.android.exoplayer:exoplayer:2.16.1"
 ```
-- Retrofit
+Retrofit
 ```
 implementation "com.squareup.retrofit2:retrofit:2.9.0"
 implementation "com.squareup.retrofit2:converter-gson:2.9.0"
