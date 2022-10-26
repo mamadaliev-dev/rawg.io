@@ -19,17 +19,6 @@
         android:theme="@style/Theme.Rawgio"
         tools:targetApi="31">
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.ca-app-pub-3733535349885807~8975089544"-->
-<!--            android:value="ca-app-pub-3733535349885807/3722762864"/>-->
-
-        <activity
-            android:name=".ui.PlayerActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
