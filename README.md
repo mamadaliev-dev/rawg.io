@@ -1,11 +1,7 @@
 # rawg.io
 Unofficial mobile app of [rawg](https://rawg.io/apidocs) database using Exoplayer✨
-![photo_2022-10-27_00-19-20](https://user-images.githubusercontent.com/100607586/198117323-cef8ed8a-40c8-44cf-9277-0945c5fcb2df.jpg)
-![photo_2022-10-27_00-19-30](https://user-images.githubusercontent.com/100607586/198117333-a456a24f-2fc8-4056-96c1-e65a7e7bce2b.jpg)
-![photo_2022-10-27_00-19-33](https://user-images.githubusercontent.com/100607586/198117359-50240a7f-1149-4c38-b47d-147b4a6b7c85.jpg)
-![photo_2022-10-27_00-19-37](https://user-images.githubusercontent.com/100607586/198117363-1ba35261-4fd2-41b4-89ce-b4f627958a17.jpg)
-![photo_2022-10-27_00-19-40](https://user-images.githubusercontent.com/100607586/198117377-a0e862a4-3889-45be-9c5a-d719f9d41569.jpg)
-![photo_2022-10-27_00-19-44](https://user-images.githubusercontent.com/100607586/198117381-18cd2e08-2b1f-4c27-b760-d6090640e775.jpg)
+
+![Untitled-11](https://user-images.githubusercontent.com/100607586/198119004-f83a4beb-6edc-4ce3-bcb6-f3b674925acc.jpg)
 
 ### Libraries💻
 ExoPlayer:
