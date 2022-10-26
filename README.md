@@ -29,6 +29,10 @@ implementation 'com.github.bumptech.glide:glide:4.13.1'
 kapt 'com.github.bumptech.glide:compiler:4.13.1'
 ```
 - Navigation
+```
+implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+```
 - MVVM
 - Clean Architecture
 
