@@ -2,7 +2,7 @@
 Unofficial mobile application of rawg.io database using Exoplayer✨
 ## API: [rawg](https://rawg.io/apidocs)
 
-### Libraries
+### Libraries💻
 ExoPlayer:
 ```
 implementation "com.google.android.exoplayer:exoplayer:2.16.1"
@@ -35,7 +35,7 @@ implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
 implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 ```
 
-### Other Libraries:
+### Other Libraries🧾️
 ```
 // Image Slider
 implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
