@@ -1,6 +1,5 @@
 # rawg.io
-Unofficial mobile application of rawg.io database using Exoplayer✨
-## API: [rawg](https://rawg.io/apidocs)
+Unofficial mobile app of [rawg](https://rawg.io/apidocs) database using Exoplayer✨
 
 ### Libraries💻
 ExoPlayer:
