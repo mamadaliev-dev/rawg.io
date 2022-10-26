@@ -3,41 +3,37 @@ Unofficial mobile application of rawg.io database using Exoplayer✨
 ## API: [rawg](https://rawg.io/apidocs)
 
 ## Libraries
-ExoPlayer
+ExoPlayer:
 ```
 implementation "com.google.android.exoplayer:exoplayer:2.16.1"
 ```
-Retrofit
+Retrofit:
 ```
 implementation "com.squareup.retrofit2:retrofit:2.9.0"
 implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 ```
-- Kotlin Coroutines
+Kotlin Coroutines:
 ```
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
 ```
-- Hilt
+Hilt:
 ```
 implementation 'com.google.dagger:hilt-android:2.42'
 kapt 'com.google.dagger:hilt-compiler:2.42'
 ```
-- Glide
+Glide:
 ```
 implementation 'com.github.bumptech.glide:glide:4.13.1'
 kapt 'com.github.bumptech.glide:compiler:4.13.1'
 ```
-- Navigation
+Navigation:
 ```
 implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
 implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 ```
-- MVVM
-- Clean Architecture
-
-
 
 Other Libraries:
 ```
